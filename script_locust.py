@@ -3,13 +3,9 @@ from locust.contrib.fasthttp import FastHttpUser
 import requests
 
 class MyUser(FastHttpUser):
-    wait_time = between(2, 5)
-
-    def on_start(self):
-        self.host = "YOUR_HOST_URL" 
+    wait_time = between(0.5, 1)
 
     @task
     def download_file(self):
-        url = f"{self.host}"
-        print(url)
+        url = "URL_OF_YOUR_FILE"
         response = requests.get(url)
